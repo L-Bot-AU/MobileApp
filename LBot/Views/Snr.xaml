@@ -9,13 +9,10 @@
     <xct:TabView Style="{StaticResource TabBar}">
         
         <xct:TabViewItem Text="Home" Style="{StaticResource TabBarItem}">
-            <xct:TabViewItem.Content >
-                <StackLayout>
-                    <Label Text="Hou"
-                       TextColor="Blue"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
+            <xct:TabViewItem.Content>
+                <ScrollView>
+                <templates:snrDataView></templates:snrDataView>
+                </ScrollView>
             </xct:TabViewItem.Content>
         </xct:TabViewItem>
 

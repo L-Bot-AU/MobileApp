@@ -29,7 +29,54 @@
                 </RelativeLayout>
             </Frame>
             <Label x:Name="close" Text="Closes 2:30pm" Style="{StaticResource largeText}"></Label>
+            <StackLayout x:Name="TodaysPrediction">
+                <Label Text="Predictions for today" Style="{StaticResource tileText}"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition> <!--Before School -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 1-->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 2-->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 1 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 3-->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 4-->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 2 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 5 -->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label x:Name="Slot1Title" Style="{StaticResource plainText}" Text="Before School"></Label>
+                    <Label x:Name="Slot1Value" Style="{StaticResource plainText}" Grid.Column="1" Text="50"></Label>
+                    
+                    <Label x:Name="Slot2Title" Style="{StaticResource plainText}" Grid.Row="1" Text="Period 1"></Label>
+                    <Label x:Name="Slot2Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="1" Text="10"></Label>
+                    
+                    <Label x:Name="Slot3Title" Style="{StaticResource plainText}" Grid.Row="2" Text="Period 2"></Label>
+                    <Label x:Name="Slot3Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="2" Text=" 20"></Label>
+                    
+                    <Label x:Name="Slot4Title" Style="{StaticResource plainText}" Grid.Row="3" Text="Recess"></Label>
+                    <Label x:Name="Slot4Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="3" Text="70"></Label>
+                    
+                    <Label x:Name="Slot5Title" Style="{StaticResource plainText}" Grid.Row="4" Text="Period 3"></Label>
+                    <Label x:Name="Slot5Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="4" Text="10"></Label>
+                    
+                    <Label x:Name="Slot6Title" Style="{StaticResource plainText}" Grid.Row="5" Text="Lunch"></Label>
+                    <Label x:Name="Slot6Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="5" Text="80"></Label>
 
+                    <Label x:Name="Slot7Title" Style="{StaticResource plainText}" Grid.Row="6" Text="Period 4"></Label>
+                    <Label x:Name="Slot7Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="6" Text="20"></Label>
+
+                    <Label x:Name="Slot8Title" Style="{StaticResource plainText}" Grid.Row="7" Text="Period 5"></Label>
+                    <Label x:Name="Slot8Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="7" Text="20"></Label>
+
+                </Grid>
+            </StackLayout>
+
+            <StackLayout x:Name="FuturePredictions">
+                
+            </StackLayout>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

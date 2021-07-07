@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LBot.Views.Home"
+             xmlns:templates="clr-namespace:LBot.Templates;assembly=LBot"
+             Title="Home">
+
+    <xct:TabView Style="{StaticResource TabBar}">
+
+        <xct:TabViewItem Text="Home" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <StackLayout>
+                    <templates:jnrDataView></templates:jnrDataView>
+                    <templates:snrDataView></templates:snrDataView>
+                </StackLayout>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+
+        <xct:TabViewItem Text="Events" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <templates:Events></templates:Events>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+
+        <!--<xct:TabViewItem Text="Timetable" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <StackLayout>
+                    <Label Text="Timetable"
+                       TextColor="Blue"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>-->
+
+    </xct:TabView>
+</ContentPage>

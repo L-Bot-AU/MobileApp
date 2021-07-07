@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LBot.Templates.baseDataView">
+    <ContentView.Content>
+        <StackLayout>
+            <Label Style="{StaticResource tileText}" x:Name="LibraryTitle" Text="A"></Label>
+            <Frame BackgroundColor="Red" x:Name="Alert" Margin="10" CornerRadius="10">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label FontSize="Medium" VerticalOptions="CenterAndExpand">⚠</Label>
+                        <Label Text="Foo Foo" VerticalOptions="CenterAndExpand"  Grid.Column="1" TextColor="White" FontSize="Medium" x:Name="AlertText"></Label>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Label x:Name="seatsLeft" Text="30 Seats Left" TextColor="Black" Style="{StaticResource largeText}"></Label>
+            <Frame BackgroundColor="Aqua" WidthRequest="350" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50">
+                <RelativeLayout>
+                    <Frame BackgroundColor="Blue" WidthRequest="100" HeightRequest="50">
+                    </Frame>
+                    <Label x:Name="percentage" TextColor="Black" Text="70% full" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                </RelativeLayout>
+            </Frame>
+            <Label x:Name="close" Text="Closes 2:30pm" Style="{StaticResource largeText}"></Label>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

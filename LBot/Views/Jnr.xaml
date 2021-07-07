@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LBot.Views.Jnr"
+             xmlns:templates="clr-namespace:LBot.Templates;assembly=LBot"
+             Title="Junior Library">
+
+    <xct:TabView Style="{StaticResource TabBar}">
+        
+        <xct:TabViewItem Text="Home" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <StackLayout>
+                    <Label Text="Home"
+                       TextColor="Black"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+
+        <xct:TabViewItem Text="Events" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <templates:Events></templates:Events>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+
+        <xct:TabViewItem Text="About" Style="{StaticResource TabBarItem}">
+            <xct:TabViewItem.Content>
+                <StackLayout>
+                    <Label Text="Opening hours" Style="{StaticResource tileText}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Monday:"  Style="{StaticResource plainText}"/>
+                        <Label Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="1" Text="Tuesday:" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="2" Text="Wednesday:"  Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="3" Text="Thursday:" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="4" Text="Friday:" Style="{StaticResource plainText}"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
+                    </Grid>
+                    <Label Text="Total Seats" Style="{StaticResource tileText}"/>
+                    <Label Text="108" Style="{StaticResource plainText}"/>
+                    <Label Text="Librarians" Style="{StaticResource tileText}"/>
+                    <Label Text="Ms Crothers" Style="{StaticResource plainText}"/>
+                    <Label Text="Email" Style="{StaticResource tileText}"/>
+                    <Label Text="juniorlibrary@sbhs.nsw.edu.au" Style="{StaticResource plainText}"></Label>
+                </StackLayout>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+    </xct:TabView>
+
+</ContentPage>

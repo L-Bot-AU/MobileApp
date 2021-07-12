@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:skia="clr-namespace:SkiaSharp;assembly=SkiaSharp"
+             xmlns:skiaforms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="LBot.Templates.baseDataView">
     <ContentView.Content>
         <StackLayout>
@@ -22,11 +24,10 @@
                 </StackLayout>
             </Frame>
             <Label x:Name="seatsLeft" Text="30 Seats Left" TextColor="Black" Style="{StaticResource largeText}"></Label>
-            <Frame BackgroundColor="Aqua" WidthRequest="350" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50">
+            <Frame BackgroundColor="{StaticResource FillBarBackground}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
                 <RelativeLayout>
-                    <Frame BackgroundColor="Blue" WidthRequest="100" HeightRequest="50">
-                    </Frame>
-                    <Label x:Name="percentage" TextColor="Black" Text="70% full" FontSize="Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                    <Frame BackgroundColor="{StaticResource FillBarForeground}" WidthRequest="300" HeightRequest="30"></Frame>
+                    <Label x:Name="percentage" TextColor="Black" Text="70% full" FontSize="Medium" Margin="10" WidthRequest="64" TranslationX="163"></Label>
                 </RelativeLayout>
             </Frame>
             <Label x:Name="close" Text="Closes 2:30pm" Style="{StaticResource largeText}"></Label>
@@ -76,7 +77,26 @@
             </StackLayout>
 
             <StackLayout x:Name="FuturePredictions">
+                <Label Text="Future Predictions" Style="{StaticResource tileText}"></Label>
                 <microcharts:ChartView x:Name="Chart" HeightRequest="300"></microcharts:ChartView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="MondayButton" Text="Mon"></Button>
+                    <Button x:Name="TuesdayButton" Text="Tues" Grid.Column="1"></Button>
+                    <Button x:Name="WednesdayButton" Text="Wed" Grid.Column="2"></Button>
+                    <Button x:Name="ThursdayButton" Text="Thurs" Grid.Column="3"></Button>
+                    <Button x:Name="FridayButton" Text="Fri" Grid.Column="4"></Button>
+                </Grid>
             </StackLayout>
         </StackLayout>
     </ContentView.Content>

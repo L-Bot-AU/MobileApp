@@ -5,6 +5,8 @@
              x:Class="LBot.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="FillBarBackground">#aa8822</Color>
+            <Color x:Key="FillBarForeground">#bbaa99</Color>
             <Style x:Key="plainText" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"></Setter>
                 <Setter Property="TranslationX" Value="10"></Setter>

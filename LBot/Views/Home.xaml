@@ -22,17 +22,5 @@
                 <templates:Events></templates:Events>
             </xct:TabViewItem.Content>
         </xct:TabViewItem>
-
-        <!--<xct:TabViewItem Text="Timetable" Style="{StaticResource TabBarItem}">
-            <xct:TabViewItem.Content>
-                <StackLayout>
-                    <Label Text="Timetable"
-                       TextColor="Blue"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-            </xct:TabViewItem.Content>
-        </xct:TabViewItem>-->
-
     </xct:TabView>
 </ContentPage>

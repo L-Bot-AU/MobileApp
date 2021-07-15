@@ -9,7 +9,8 @@
         <StackLayout>
             <Label Style="{StaticResource tileText}" x:Name="LibraryTitle" Text="A"></Label>
             <Frame BackgroundColor="Red" x:Name="Alert" Margin="10" CornerRadius="10">
-                <StackLayout>
+                <RelativeLayout>
+                    
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
@@ -21,12 +22,12 @@
                         <Label FontSize="Medium" VerticalOptions="CenterAndExpand">⚠</Label>
                         <Label Text="Foo Foo" VerticalOptions="CenterAndExpand"  Grid.Column="1" TextColor="White" FontSize="Medium" x:Name="AlertText"></Label>
                     </Grid>
-                </StackLayout>
+                </RelativeLayout>
             </Frame>
             <Label x:Name="seatsLeft" Text="30 Seats Left" TextColor="Black" Style="{StaticResource largeText}"></Label>
-            <Frame BackgroundColor="{StaticResource FillBarBackground}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
+            <Frame BackgroundColor="{StaticResource BackgroundColour}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
                 <RelativeLayout>
-                    <Frame BackgroundColor="{StaticResource FillBarForeground}" WidthRequest="300" HeightRequest="30"></Frame>
+                    <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="300" HeightRequest="30"></Frame>
                     <Label x:Name="percentage" TextColor="Black" Text="70% full" FontSize="Medium" Margin="10" WidthRequest="64" TranslationX="163"></Label>
                 </RelativeLayout>
             </Frame>

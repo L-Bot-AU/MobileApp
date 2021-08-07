@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace LBot {
     public partial class App:Application {
@@ -19,6 +20,8 @@ namespace LBot {
         }
 
         protected override void OnStart() {
+            int home_page = Preferences.Get("home_page_choice", 0);
+
         }
 
         protected override void OnSleep() {

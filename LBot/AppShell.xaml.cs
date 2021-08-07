@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using Xamarin.Essentials;
 
 namespace LBot {
     public partial class AppShell:Shell {

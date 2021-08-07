@@ -65,6 +65,10 @@ namespace LBot.Templates {
             BarChart chart = new BarChart { Entries = entries, ValueLabelOrientation=Orientation.Horizontal, MaxValue=110, LabelOrientation=Orientation.Horizontal};
             Chart.Chart = chart;
         }
+
+        public void closeButton(object sender, EventArgs args) {
+            Alert.IsVisible = false;
+        }
         
     }
 }

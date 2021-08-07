@@ -10,7 +10,7 @@
             <Label Style="{StaticResource tileText}" x:Name="LibraryTitle" Text="A"></Label>
             <Frame BackgroundColor="Red" x:Name="Alert" Margin="10" CornerRadius="10">
                 <RelativeLayout>
-                    
+                    <Button Text="X" Opacity="0.75" TextColor="White" BackgroundColor="Red" TranslationX="300" TranslationY="-15" FontAttributes="Bold" FontSize="Medium" Clicked="closeButton"></Button>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>

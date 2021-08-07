@@ -8,6 +8,7 @@
             <Color x:Key="NavColor">#1E90FF</Color>
             <Color x:Key="BackgroundColour">#FAFAFA</Color>
             <Color x:Key="TextColor">#000000</Color>
+            <Color x:Key="LinkColor">#0000ff</Color>
             <Style x:Key="plainText" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"></Setter>
                 <Setter Property="TranslationX" Value="10"></Setter>

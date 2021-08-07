@@ -17,7 +17,7 @@
     <FlyoutItem Title="Home" x:Name="Home0">
         <ShellContent ContentTemplate="{DataTemplate views:Home}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Other Home" x:Name="Home1">
+    <FlyoutItem Title="Home" x:Name="Home1">
         <ShellContent ContentTemplate="{DataTemplate views:Home1}"/>
     </FlyoutItem>
     <FlyoutItem Title="Junior Library">
@@ -29,9 +29,5 @@
     <FlyoutItem Title="About">
         <ShellContent ContentTemplate="{DataTemplate views:About}"/>
     </FlyoutItem>
-    
-    
 
-    
-   
 </Shell>

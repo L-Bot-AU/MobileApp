@@ -5,9 +5,22 @@
              Title="About">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="If you find any bugs or issues within this app please report them here:
+                   https://github.com/L-Bot-SBHS/MobileApp/issues/"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="{StaticResource TextColor}">
+                <!-- <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="If you find any bug in this app or if you have suggestiong please create an issue"></Span>
+                        <Span Text="here" TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://github.com/L-Bot-SBHS/MobileApp/issues/"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText> -->
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

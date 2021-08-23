@@ -27,8 +27,22 @@
                 <Label Text="" BackgroundColor="Green" Grid.Row="2"></Label>
                 <Label Text="Low Impact" Grid.Column="1" Grid.Row="2" Style="{StaticResource plainText}"></Label>
             </Grid>
-            <Button Text="Filter Junior Library Events" x:Name="jnrFilterButton" Clicked="filterJnr"></Button>
-            <Button Text="Filter Senior Library Events" x:Name="snrFilterButton" Clicked="filterSnr"></Button>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Text="Filter Junior Library Events" x:Name="jnrFilterButton" Clicked="filterJnr" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                <CheckBox x:Name="jnrCheckBox" Grid.Column="1" Color="{StaticResource NavColor}" IsChecked="False"></CheckBox>
+                <Button Text="Filter Senior Library Events" x:Name="snrFilterButton" Clicked="filterSnr" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" Grid.Row="1"></Button>
+                <CheckBox x:Name="snrCheckBox" Grid.Column="1" Grid.Row="1" Color="{StaticResource NavColor}" IsChecked="False"></CheckBox>
+
+            </Grid>
+            
         </StackLayout>
     </ContentView.Content>
 </ContentView>

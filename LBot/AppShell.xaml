@@ -2,9 +2,14 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:LBot.Views"
+       xmlns:vm="clr-namespace:LBot.ViewModels"
        x:Class="LBot.AppShell">
 
 
+    <Shell.BindingContext>
+        <vm:AppViewModel/>
+    </Shell.BindingContext>
+    
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Grid BackgroundColor="White"
@@ -14,10 +19,10 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Home" x:Name="Home0">
+    <FlyoutItem Title="Home" x:Name="Home0" IsVisible="{Binding home0Visible}">
         <ShellContent ContentTemplate="{DataTemplate views:Home}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Home" x:Name="Home1">
+    <FlyoutItem Title="Home" x:Name="Home1" IsVisible="{Binding home1Visible}">
         <ShellContent ContentTemplate="{DataTemplate views:Home1}"/>
     </FlyoutItem>
     <FlyoutItem Title="Junior Library">
@@ -28,6 +33,9 @@
     </FlyoutItem>
     <FlyoutItem Title="About">
         <ShellContent ContentTemplate="{DataTemplate views:About}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Settings">
+        <ShellContent ContentTemplate="{DataTemplate views:AutomateEgg}"/>
     </FlyoutItem>
 
 </Shell>

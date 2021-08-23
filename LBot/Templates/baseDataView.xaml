@@ -80,7 +80,7 @@
             <StackLayout x:Name="FuturePredictions">
                 <Label Text="Future Predictions" Style="{StaticResource tileText}"></Label>
                 <microcharts:ChartView x:Name="Chart" HeightRequest="300"></microcharts:ChartView>
-                <Grid>
+                <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
@@ -92,11 +92,11 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="MondayButton" Text="Mon"></Button>
-                    <Button x:Name="TuesdayButton" Text="Tues" Grid.Column="1"></Button>
-                    <Button x:Name="WednesdayButton" Text="Wed" Grid.Column="2"></Button>
-                    <Button x:Name="ThursdayButton" Text="Thurs" Grid.Column="3"></Button>
-                    <Button x:Name="FridayButton" Text="Fri" Grid.Column="4"></Button>
+                    <Button x:Name="MondayButton" Text="Mon" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                    <Button x:Name="TuesdayButton" Text="Tues" Grid.Column="1" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                    <Button x:Name="WednesdayButton" Text="Wed" Grid.Column="2" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                    <Button x:Name="ThursdayButton" Text="Thurs" Grid.Column="3" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                    <Button x:Name="FridayButton" Text="Fri" Grid.Column="4" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
                 </Grid>
             </StackLayout>
         </StackLayout>

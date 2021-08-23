@@ -66,6 +66,12 @@ namespace LBot.Templates {
             Chart.Chart = chart;
         }
 
+        public void day_diff(object sender, EventArgs args) {
+            
+        }
+
+
+
         public void closeButton(object sender, EventArgs args) {
             Alert.IsVisible = false;
         }

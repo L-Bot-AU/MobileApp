@@ -6,37 +6,48 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SocketIOClient;
+using System.Text.Json;
 
 namespace LBot.Templates {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public class Event {
+        public string text { get; set; }
         public int severity { get; set; }
-        public string Text { get; set; }
-        public string library {get; set;}
+        public string library { get; set; }
     }
     
     public class Fetcher {
         public List<Event> eventList;
-        
+        SocketIO client = (Application.Current as App).client;
 
+        private async void connect() {
+            await client.ConnectAsync();
+        }
 
         public List<Event> GetEvents(bool jnrFilter, bool snrFilter) {
-            List<Event> inititialList;
-            inititialList = new List<Event>();
+            List<Event> initialList;
+            initialList = new List<Event>();
+            client.On("events", response => {
+                string text = response.GetValue<string>();
+                initialList = JsonSerializer.Deserialize<List<Event>>(text);
+            });
+            connect();
+            
+            
+            initialList.Add(new Event { severity = 0, text="Jnr: Zad Zad Zad", library="jnr"});
+            initialList.Add(new Event { severity = 1, text="Snr: Foo Foo Foo", library="snr" });
+            initialList.Add(new Event { severity = 1, text="Jnr: Baz Baz Baz", library="jnr" });
+            initialList.Add(new Event { severity = 2, text="Snr: Bar Bar Bar", library="snr" });
+            
             eventList = new List<Event>();
-            inititialList.Add(new Event { severity = 0, Text="Jnr: Zad Zad Zad", library="jnr"});
-            inititialList.Add(new Event { severity = 1, Text="Snr: Foo Foo Foo", library="snr" });
-            inititialList.Add(new Event { severity = 1, Text="Jnr: Baz Baz Baz", library="jnr" });
-            inititialList.Add(new Event { severity = 2, Text="Snr: Bar Bar Bar", library="snr" });
-            for(int i = 0; i < inititialList.Count(); i++) {
-                if(inititialList[i].library=="jnr" && jnrFilter == false) {
-                    eventList.Add(inititialList[i]);
-                } else if(inititialList[i].library=="snr"&& snrFilter == false) {
-                    eventList.Add(inititialList[i]);
+            for (int i = 0; i < initialList.Count(); i++) {
+                if(initialList[i].library=="jnr" && jnrFilter == false) {
+                    eventList.Add(initialList[i]);
+                } else if(initialList[i].library=="snr" && snrFilter == false) {
+                    eventList.Add(initialList[i]);
                 }  
             }
-
 
             return eventList;
         }
@@ -45,6 +56,8 @@ namespace LBot.Templates {
 
 
     public partial class Events:ContentView {
+
+
         bool JnrFilter = false;
         bool SnrFilter = false;
         private List<Event> eventList;
@@ -72,7 +85,7 @@ namespace LBot.Templates {
 
             for (int i = 0; i<count; i++) {
                 Label EventText = new Label {
-                    Text=eventList[i].Text,
+                    Text=eventList[i].text,
                     TextColor = Color.Black
                 };
 
@@ -107,9 +120,11 @@ namespace LBot.Templates {
             if (JnrFilter) {
                 eventsGrid.Children.Clear();
                 JnrFilter = false;
+                jnrCheckBox.IsChecked = false;
                 generateEventGrid(JnrFilter,SnrFilter);
                 
             } else {
+                jnrCheckBox.IsChecked = true;
                 JnrFilter = true;
                 generateEventGrid(JnrFilter, SnrFilter);
                 
@@ -119,10 +134,12 @@ namespace LBot.Templates {
         public void filterSnr(object sender, EventArgs args) {
             if (SnrFilter) {
                 eventsGrid.Children.Clear();
+                snrCheckBox.IsChecked = false;
                 SnrFilter = false;
                 generateEventGrid(JnrFilter, SnrFilter);
 
             } else {
+                snrCheckBox.IsChecked = true;
                 SnrFilter = true;
                 generateEventGrid(JnrFilter, SnrFilter);
 

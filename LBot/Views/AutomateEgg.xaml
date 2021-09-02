@@ -20,7 +20,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Home Screen: " Style="{StaticResource plainText}"/>
-                <Switch IsToggled="False" Grid.Column="1" Toggled="ToggleHomeChoice"></Switch>
+                <Switch IsToggled="False" Grid.Column="1" Toggled="ToggleHomeChoice" OnColor="{StaticResource NavColor}"></Switch>
             </Grid>
 
         </StackLayout>

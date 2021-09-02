@@ -7,66 +7,17 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SocketIOClient;
 using System.Text.Json;
+using LBot.Models;
 
 namespace LBot.Templates {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
-    public class Event {
-        public string text { get; set; }
-        public int severity { get; set; }
-        public string library { get; set; }
-    }
-    
-    public class Fetcher {
-        public List<Event> eventList;
-        SocketIO client = (Application.Current as App).client;
-
-        private async void connect() {
-            await client.ConnectAsync();
-        }
-
-        public List<Event> GetEvents(bool jnrFilter, bool snrFilter) {
-            List<Event> initialList;
-            initialList = new List<Event>();
-            client.On("events", response => {
-                string text = response.GetValue<string>();
-                initialList = JsonSerializer.Deserialize<List<Event>>(text);
-            });
-            connect();
-            
-            
-            initialList.Add(new Event { severity = 0, text="Jnr: Zad Zad Zad", library="jnr"});
-            initialList.Add(new Event { severity = 1, text="Snr: Foo Foo Foo", library="snr" });
-            initialList.Add(new Event { severity = 1, text="Jnr: Baz Baz Baz", library="jnr" });
-            initialList.Add(new Event { severity = 2, text="Snr: Bar Bar Bar", library="snr" });
-            
-            eventList = new List<Event>();
-            for (int i = 0; i < initialList.Count(); i++) {
-                if(initialList[i].library=="jnr" && jnrFilter == false) {
-                    eventList.Add(initialList[i]);
-                } else if(initialList[i].library=="snr" && snrFilter == false) {
-                    eventList.Add(initialList[i]);
-                }  
-            }
-
-            return eventList;
-        }
-        
-    }
-
-
     public partial class Events:ContentView {
-
-
         bool JnrFilter = false;
         bool SnrFilter = false;
-        private List<Event> eventList;
-        Fetcher fetcher = new Fetcher();
-
+        
         public void generateEventGrid(bool jnrFilter = false, bool snrFilter = false) {
-            eventList = new List<Event>();
-            eventList = fetcher.GetEvents(jnrFilter, snrFilter);
-
+            List<Event> eventList = (Application.Current as App).eventslist;
             int count = eventList.Count;
 
             eventsGrid.Children.Clear();
@@ -74,9 +25,10 @@ namespace LBot.Templates {
             eventsGrid.RowDefinitions.Clear();
             
             
-            
-
             for (int i = 0; i<count; i++) {
+                if(eventList[i].library=="jnr" && jnrFilter || eventList[i].library=="snr" && snrFilter) {
+                    continue;
+                }
                 eventsGrid.RowDefinitions.Add(new RowDefinition());
             }
 
@@ -84,6 +36,10 @@ namespace LBot.Templates {
             eventsGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             for (int i = 0; i<count; i++) {
+                if (eventList[i].library=="jnr" && jnrFilter || eventList[i].library=="snr" && snrFilter) {
+                    continue;
+                }
+
                 Label EventText = new Label {
                     Text=eventList[i].text,
                     TextColor = Color.Black
@@ -91,77 +47,83 @@ namespace LBot.Templates {
 
                 Color severityColour = Color.Black;
 
-                switch (eventList[i].severity) {
-                    case 0:
+                switch (eventList[i].impact) {
+                    case "high":
                         severityColour = Color.Red;
                         break;
-                    case 1:
+                    case "moderate":
                         severityColour = Color.Yellow;
                         break;
-                    case 2:
+                    case "low":
                         severityColour = Color.Green;
                         break;
                     default:
                         break;
-
                 }
 
-                Label basic = new Label {
-                    Text = "",
-                    BackgroundColor = severityColour
-
+                BoxView test = new BoxView {
+                    BackgroundColor = severityColour,
+                    HeightRequest = 20,
+                    WidthRequest = 20
                 };
-                eventsGrid.Children.Add(basic, 0, i);
+
+                eventsGrid.Children.Add(test, 0, i);
                 eventsGrid.Children.Add(EventText, 1, i);
             }
         }
-
+        
         public void filterJnr(object sender, EventArgs args) {
             if (JnrFilter) {
-                eventsGrid.Children.Clear();
                 JnrFilter = false;
                 jnrCheckBox.IsChecked = false;
-                generateEventGrid(JnrFilter,SnrFilter);
                 
             } else {
-                jnrCheckBox.IsChecked = true;
                 JnrFilter = true;
-                generateEventGrid(JnrFilter, SnrFilter);
-                
+                jnrCheckBox.IsChecked = true;
             }
+            generateEventGrid(JnrFilter, SnrFilter);
         }
 
         public void filterSnr(object sender, EventArgs args) {
             if (SnrFilter) {
-                eventsGrid.Children.Clear();
                 snrCheckBox.IsChecked = false;
                 SnrFilter = false;
-                generateEventGrid(JnrFilter, SnrFilter);
 
             } else {
                 snrCheckBox.IsChecked = true;
                 SnrFilter = true;
-                generateEventGrid(JnrFilter, SnrFilter);
-
             }
+            generateEventGrid(JnrFilter, SnrFilter);
         }
 
         public Events() {
             App.pageBase page = (Application.Current as App).pageInfo;
-
+            
             InitializeComponent();
+            MessagingCenter.Subscribe<object>(this, "Event", sender => {
+                if (page.currentPage=="jnr") {
+                    generateEventGrid(false, true);
+                } else if (page.currentPage=="snr") {
+                    generateEventGrid(true, false);
+                } else {
+                    generateEventGrid();
+                }
+            });
+
             if (page.currentPage=="jnr") {
-                generateEventGrid(false,true);
-            } else if(page.currentPage=="snr") {
+                generateEventGrid(false, true);
+            } else if (page.currentPage=="snr") {
                 generateEventGrid(true, false);
             } else {
                 generateEventGrid();
             }
-            if(page.currentPage=="jnr"  || page.currentPage=="snr") {
+
+            if (page.currentPage=="jnr"  || page.currentPage=="snr") {
                 jnrFilterButton.IsVisible = false;
                 snrFilterButton.IsVisible = false;
+                jnrCheckBox.IsVisible = false;
+                snrCheckBox.IsVisible = false;
             }
-            
         }
     }
 }

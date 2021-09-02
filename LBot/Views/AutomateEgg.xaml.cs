@@ -23,7 +23,7 @@ namespace LBot.Views {
                 home_page = 1;
                 Preferences.Set("home_page_choice", 1);
             }
-            MessagingCenter.Send<object,int>(this, "Home", 0);
+            MessagingCenter.Send<object,int>(this, "Home", home_page);
         }
     }
 }

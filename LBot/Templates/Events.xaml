@@ -35,12 +35,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
-                <Button Text="Filter Junior Library Events" x:Name="jnrFilterButton" Clicked="filterJnr" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
-                <CheckBox x:Name="jnrCheckBox" Grid.Column="1" Color="{StaticResource NavColor}" IsChecked="False"></CheckBox>
-                <Button Text="Filter Senior Library Events" x:Name="snrFilterButton" Clicked="filterSnr" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" Grid.Row="1"></Button>
-                <CheckBox x:Name="snrCheckBox" Grid.Column="1" Grid.Row="1" Color="{StaticResource NavColor}" IsChecked="False"></CheckBox>
-
+                
+                
+                <Button Text="Filter Junior Library Events" x:Name="jnrFilterButton" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                <CheckBox x:Name="jnrCheckBox" Grid.Column="1" Color="{StaticResource NavColor}" IsChecked="False" CheckedChanged="filterJnr"></CheckBox>
+                <Button Text="Filter Senior Library Events" x:Name="snrFilterButton" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" Grid.Row="1"></Button>
+                <CheckBox x:Name="snrCheckBox" Grid.Column="1" Grid.Row="1" Color="{StaticResource NavColor}" IsChecked="False" CheckedChanged="filterSnr"></CheckBox>
             </Grid>
             
         </StackLayout>

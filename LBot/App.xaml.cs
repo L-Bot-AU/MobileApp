@@ -1,6 +1,10 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Essentials;
 using SocketIOClient;
+using LBot.Worker;
+using System.Threading.Tasks;
+using LBot.Models;
+using System.Collections.Generic;
 
 namespace LBot {
     public partial class App:Application {
@@ -13,20 +17,23 @@ namespace LBot {
             public string currentLibrary;
         }
 
-        public SocketIO client = new SocketIO("http://192.168.137.1:2910/", new SocketIOOptions {
-            EIO = 3
-        });
-
+        public List<Event> eventslist = new List<Event>();
         public pageBase pageInfo = new pageBase();
         public libBase libInfo = new libBase();
         public App() {
             InitializeComponent();
             MainPage = new AppShell();
-            int home_page = Preferences.Get("home_page_choice", 1);
-            MessagingCenter.Send<object, int>(this, "Home", home_page);
+            startSocketIO();
+        }
+
+        private void startSocketIO() {
+            SocketIOWorker socketIOWorker = new SocketIOWorker();
+            socketIOWorker.Start();
         }
 
         protected override void OnStart() {
+            int home_page = Preferences.Get("home_page_choice", 1);
+            MessagingCenter.Send<object, int>(this, "Home", home_page);
 
         }
 

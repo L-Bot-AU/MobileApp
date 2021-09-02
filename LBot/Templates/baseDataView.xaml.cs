@@ -49,15 +49,12 @@ namespace LBot.Templates {
             App.libBase lib = (Application.Current as App).libInfo;
             App.pageBase page = (Application.Current as App).pageInfo;
             string libraryName = lib.currentLibrary;
-            
 
             if (lib.currentLibrary =="jnr") {
                 LibraryTitle.Text="Junior Library";
-                AlertText.Text="Junior library closed for stocktake";
                 BindingContext = new jnrDynamicDataViewModel();
             } else {
                 LibraryTitle.Text="Senior Library";
-                AlertText.Text="Year 7s detected in the senior library";
                 BindingContext = new snrDynamicDataViewModel();
             }
 

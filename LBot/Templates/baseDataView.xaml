@@ -11,16 +11,16 @@
             <Frame BackgroundColor="Red" x:Name="Alert" Margin="10" CornerRadius="10">
                 <RelativeLayout>
                     <Button Text="X" Opacity="0.75" TextColor="White" BackgroundColor="Red" TranslationX="300" TranslationY="-15" FontAttributes="Bold" FontSize="Medium" Clicked="closeButton"></Button>
-                    <Grid>
+                    <Grid WidthRequest="300">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label FontSize="Medium" VerticalOptions="CenterAndExpand">⚠</Label>
-                        <Label Text="Foo Foo" VerticalOptions="CenterAndExpand"  Grid.Column="1" TextColor="White" FontSize="Medium" x:Name="AlertText"></Label>
+                        <Label Text="{Binding Alert}" VerticalOptions="CenterAndExpand"  Grid.Column="1" TextColor="White" FontSize="Medium" x:Name="AlertText"></Label>
                     </Grid>
                 </RelativeLayout>
             </Frame>

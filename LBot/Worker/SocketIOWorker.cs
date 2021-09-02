@@ -37,10 +37,17 @@ namespace LBot.Worker {
                 int remaining = int.Parse(response.ToString().Trim(charsToTrim));
                 MessagingCenter.Send<object, int>(this, "jnrRemaining", remaining);
             });
+
             client.On("jnrAlert", resonse => {
                 char[] charsToTrim = { '[', ']','"' };
                 string alert = resonse.ToString().Trim(charsToTrim);
                 MessagingCenter.Send<object, string>(this, "jnrAlert", alert);
+            });
+
+            client.On("jnrFullness", resonse => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string alert = resonse.ToString().Trim(charsToTrim);
+                MessagingCenter.Send<object, string>(this, "jnrFullness", alert);
             });
 
         }

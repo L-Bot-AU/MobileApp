@@ -31,8 +31,8 @@
             
             <Frame BackgroundColor="{StaticResource BackgroundColour}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
                 <RelativeLayout>
-                    <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="300" HeightRequest="30"></Frame>
-                    <Label x:Name="percentage" TextColor="Black" Text="70% full" FontSize="Medium" Margin="10" WidthRequest="64" TranslationX="163"></Label>
+                    <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="{Binding FullnessBar}" HeightRequest="30"></Frame>
+                    <Label x:Name="percentage" TextColor="Black" Text="{Binding Fullness}" FontSize="Medium" Margin="10" WidthRequest="64" TranslationX="163"></Label>
                 </RelativeLayout>
             </Frame>
             <Label x:Name="close" Text="Closes 2:30pm" Style="{StaticResource largeText}"></Label>

@@ -12,6 +12,7 @@ namespace LBot.Worker {
 
         public async void Start() {
             getEvents();
+            getJnrDynamic();
             await client.ConnectAsync();
         }
 
@@ -19,7 +20,7 @@ namespace LBot.Worker {
             EIO = 4
         });
 
-        public async void getEvents() {
+        public void getEvents() {
             List<Event> events = new List<Event>();
             client.On("events", response => {
                 string text = response.ToString();
@@ -30,5 +31,15 @@ namespace LBot.Worker {
             });
         }
 
+        public void getJnrDynamic() {
+            client.On("jnrRemaining", response => {
+                char[] charsToTrim = { '[', ']' };
+                int remaining = int.Parse(response.ToString().Trim(charsToTrim));
+                
+                
+
+                MessagingCenter.Send<object, int>(this, "jnrRemaining", remaining);
+            });
+        }
     }
 }

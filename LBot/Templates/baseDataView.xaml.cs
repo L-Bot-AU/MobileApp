@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microcharts;
 using SkiaSharp;
+using LBot.ViewModels;
 
 namespace LBot.Templates {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -40,41 +40,36 @@ namespace LBot.Templates {
             return entries;
         }
 
+        public void closeButton(object sender, EventArgs args) {
+            Alert.IsVisible = false;
+        }
 
         public baseDataView() {
             InitializeComponent();
             App.libBase lib = (Application.Current as App).libInfo;
             App.pageBase page = (Application.Current as App).pageInfo;
             string libraryName = lib.currentLibrary;
+            
 
             if (lib.currentLibrary =="jnr") {
                 LibraryTitle.Text="Junior Library";
                 AlertText.Text="Junior library closed for stocktake";
+                BindingContext = new jnrDynamicDataViewModel();
             } else {
                 LibraryTitle.Text="Senior Library";
                 AlertText.Text="Year 7s detected in the senior library";
+                BindingContext = new snrDynamicDataViewModel();
             }
 
             if (page.currentPage=="home") {
                 TodaysPrediction.IsVisible = false;
                 FuturePredictions.IsVisible = false;
             }
-
            
             ChartEntry[] entries =  getGraphData(libraryName);
             BarChart chart = new BarChart { Entries = entries, ValueLabelOrientation=Orientation.Horizontal, MaxValue=110, LabelOrientation=Orientation.Horizontal};
             Chart.Chart = chart;
         }
 
-        public void day_diff(object sender, EventArgs args) {
-            
-        }
-
-
-
-        public void closeButton(object sender, EventArgs args) {
-            Alert.IsVisible = false;
-        }
-        
     }
 }

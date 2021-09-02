@@ -24,7 +24,11 @@
                     </Grid>
                 </RelativeLayout>
             </Frame>
-            <Label x:Name="seatsLeft" Text="30 Seats Left" TextColor="Black" Style="{StaticResource largeText}"></Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label x:Name="seatsLeft" Text="{Binding Remaining}" Style="{StaticResource largeText}"></Label>
+                <Label Text="Seats Left" Style="{StaticResource largeText}"></Label>
+            </StackLayout>
+            
             <Frame BackgroundColor="{StaticResource BackgroundColour}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
                 <RelativeLayout>
                     <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="300" HeightRequest="30"></Frame>

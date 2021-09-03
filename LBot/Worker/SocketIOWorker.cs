@@ -50,6 +50,33 @@ namespace LBot.Worker {
                 MessagingCenter.Send<object, string>(this, "jnrFullness", alert);
             });
 
+
+            
+            client.On("jnrPeriods", response => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string text = response.ToString();
+                List<List<string>> periods = new List<List<string>>() {new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" },new List<string>(){ "", "" } };
+                
+                int row = 0;
+                int datapoint = 0;
+                for (int i=4; i<text.Length; i++) {
+                    char a = text[i];
+                    if (text[i]==']'||text[i]=='\\'||text[i]=='\"') {
+                        continue;
+                    }
+                    else if (text[i]=='[') {
+                        row++;
+                        datapoint =0;
+                    }
+                    else if (text[i]==',') {
+                        datapoint++;
+                    } else {
+                        periods[row][datapoint]+=text[i];
+                    }
+                }
+                MessagingCenter.Send<object, List<List<string>>>(this, "jnrPeriods", periods);
+            });
+
         }
     }
 }

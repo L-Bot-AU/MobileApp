@@ -96,11 +96,11 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="MondayButton" Text="Mon" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
-                    <Button x:Name="TuesdayButton" Text="Tues" Grid.Column="1" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
-                    <Button x:Name="WednesdayButton" Text="Wed" Grid.Column="2" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
-                    <Button x:Name="ThursdayButton" Text="Thurs" Grid.Column="3" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
-                    <Button x:Name="FridayButton" Text="Fri" Grid.Column="4" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+                    <Button x:Name="MondayButton" Text="Mon" Clicked="MonBtn" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" TextColor="Black" FontAttributes="Bold"></Button>
+                    <Button x:Name="TuesdayButton" Text="Tues" Clicked="TueBtn" Grid.Column="1" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" TextColor="Black" FontAttributes="Bold"></Button>
+                    <Button x:Name="WednesdayButton" Text="Wed" Clicked="WedBtn" Grid.Column="2" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" TextColor="Black" FontAttributes="Bold"></Button>
+                    <Button x:Name="ThursdayButton" Text="Thurs" Clicked="ThuBtn" Grid.Column="3" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" TextColor="Black" FontAttributes="Bold"></Button>
+                    <Button x:Name="FridayButton" Text="Fri" Clicked="FriBtn"  Grid.Column="4" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" TextColor="Black" FontAttributes="Bold"></Button>
                 </Grid>
             </StackLayout>
         </StackLayout>

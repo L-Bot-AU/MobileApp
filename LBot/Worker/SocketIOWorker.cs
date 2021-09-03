@@ -49,8 +49,6 @@ namespace LBot.Worker {
                 string alert = resonse.ToString().Trim(charsToTrim);
                 MessagingCenter.Send<object, string>(this, "jnrFullness", alert);
             });
-
-
             
             client.On("jnrPeriods", response => {
                 char[] charsToTrim = { '[', ']', '"' };
@@ -77,6 +75,12 @@ namespace LBot.Worker {
                 MessagingCenter.Send<object, List<List<string>>>(this, "jnrPeriods", periods);
             });
 
+            client.On("jnrTrends", response => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string text = response.ToString().Trim(charsToTrim);
+                Trends trend = JsonSerializer.Deserialize<Trends>(text);
+                MessagingCenter.Send<object, Trends>(this, "jnrTrends", trend);
+            });
         }
     }
 }

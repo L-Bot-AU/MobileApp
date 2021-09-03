@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using Xamarin.Forms;
+using LBot.Models;
+using Microcharts;
+
 
 namespace LBot.ViewModels {
     class jnrDynamicDataViewModel : INotifyPropertyChanged {
@@ -19,7 +22,7 @@ namespace LBot.ViewModels {
         private string alert = "Alert Loading...";
         private List<string> periodnames;
         private List<string> periodvalues;
-
+        private Trends trend;
 
         public int Remaining { get => remaining; set { remaining = value; NotifyPropertyChanged(); } }
         public string Fullness { get => fullness; set { fullness=value+"% full"; NotifyPropertyChanged(); } }
@@ -27,6 +30,10 @@ namespace LBot.ViewModels {
         public string Alert { get => alert; set { alert=value; NotifyPropertyChanged(); } }
         public List<string> PeriodNames { get => periodnames; set { periodnames=value; NotifyPropertyChanged(); } }
         public List<string> PeriodValues { get => periodvalues; set { periodvalues=value; NotifyPropertyChanged(); } }
+        public Trends Trend { get => trend; set { trend=value; NotifyPropertyChanged(); } }
+
+
+
 
         public jnrDynamicDataViewModel() {
             MessagingCenter.Subscribe<object, int>(this, "jnrRemaining", (sender, value) => {
@@ -56,6 +63,12 @@ namespace LBot.ViewModels {
                 PeriodNames = pnames;
                 PeriodValues = pvals;
             });
+
+            MessagingCenter.Subscribe<object, Trends>(this, "jnrTrends", (sender, value) => {
+                Trend = value;
+            });
+
+
         }
 
     }

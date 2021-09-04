@@ -4,11 +4,9 @@ using System.Text;
 using System.ComponentModel;
 using Xamarin.Forms;
 using LBot.Models;
-using Microcharts;
-
 
 namespace LBot.ViewModels {
-    class jnrDynamicDataViewModel : INotifyPropertyChanged {
+    class jnrDynamicDataViewModel:INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string propertyName = "") {
@@ -31,9 +29,6 @@ namespace LBot.ViewModels {
         public List<string> PeriodNames { get => periodnames; set { periodnames=value; NotifyPropertyChanged(); } }
         public List<string> PeriodValues { get => periodvalues; set { periodvalues=value; NotifyPropertyChanged(); } }
         public Trends Trend { get => trend; set { trend=value; NotifyPropertyChanged(); } }
-
-
-
 
         public jnrDynamicDataViewModel() {
             MessagingCenter.Subscribe<object, int>(this, "jnrRemaining", (sender, value) => {
@@ -67,7 +62,6 @@ namespace LBot.ViewModels {
             MessagingCenter.Subscribe<object, Trends>(this, "jnrTrends", (sender, value) => {
                 Trend = value;
             });
-
 
         }
 

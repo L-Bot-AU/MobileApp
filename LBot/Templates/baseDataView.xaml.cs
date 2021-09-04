@@ -94,8 +94,6 @@ namespace LBot.Templates {
                     ValueLabel = Trend.data[index][2].ToString()
                 }
             };
-
-            int times = Trend.labels.Count();
             BarChart chart = new BarChart { Entries = entries, ValueLabelOrientation=Orientation.Horizontal, MaxValue=110, LabelOrientation=Orientation.Horizontal };
             Chart.Chart = chart;
         }

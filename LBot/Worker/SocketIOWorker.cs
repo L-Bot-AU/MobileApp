@@ -13,6 +13,7 @@ namespace LBot.Worker {
         public async void Start() {
             getEvents();
             getJnrDynamic();
+            getsnrDynamic();
             await client.ConnectAsync();
         }
 
@@ -80,6 +81,56 @@ namespace LBot.Worker {
                 string text = response.ToString().Trim(charsToTrim);
                 Trends trend = JsonSerializer.Deserialize<Trends>(text);
                 MessagingCenter.Send<object, Trends>(this, "jnrTrends", trend);
+            });
+        }
+
+        public void getsnrDynamic() {
+            client.On("snrRemaining", response => {
+                char[] charsToTrim = { '[', ']' };
+                int remaining = int.Parse(response.ToString().Trim(charsToTrim));
+                MessagingCenter.Send<object, int>(this, "snrRemaining", remaining);
+            });
+
+            client.On("snrAlert", resonse => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string alert = resonse.ToString().Trim(charsToTrim);
+                MessagingCenter.Send<object, string>(this, "snrAlert", alert);
+            });
+
+            client.On("snrFullness", resonse => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string alert = resonse.ToString().Trim(charsToTrim);
+                MessagingCenter.Send<object, string>(this, "snrFullness", alert);
+            });
+
+            client.On("snrPeriods", response => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string text = response.ToString();
+                List<List<string>> periods = new List<List<string>>() { new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" }, new List<string>() { "", "" } };
+
+                int row = 0;
+                int datapoint = 0;
+                for (int i = 4; i<text.Length; i++) {
+                    char a = text[i];
+                    if (text[i]==']'||text[i]=='\\'||text[i]=='\"') {
+                        continue;
+                    } else if (text[i]=='[') {
+                        row++;
+                        datapoint =0;
+                    } else if (text[i]==',') {
+                        datapoint++;
+                    } else {
+                        periods[row][datapoint]+=text[i];
+                    }
+                }
+                MessagingCenter.Send<object, List<List<string>>>(this, "snrPeriods", periods);
+            });
+
+            client.On("snrTrends", response => {
+                char[] charsToTrim = { '[', ']', '"' };
+                string text = response.ToString().Trim(charsToTrim);
+                Trends trend = JsonSerializer.Deserialize<Trends>(text);
+                MessagingCenter.Send<object, Trends>(this, "snrTrends", trend);
             });
         }
     }

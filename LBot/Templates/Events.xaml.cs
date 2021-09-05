@@ -112,8 +112,8 @@ namespace LBot.Templates {
             }
 
             if (page.currentPage=="jnr"  || page.currentPage=="snr") {
-                jnrFilterButton.IsVisible = false;
-                snrFilterButton.IsVisible = false;
+                jnrLabel.IsVisible = false;
+                snrLabel.IsVisible = false;
                 jnrCheckBox.IsVisible = false;
                 snrCheckBox.IsVisible = false;
             }

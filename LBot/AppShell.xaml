@@ -20,22 +20,22 @@
     </Shell.FlyoutHeaderTemplate>
 
     <FlyoutItem Title="Home" x:Name="Home0" IsVisible="{Binding Home0Visible}">
-        <ShellContent ContentTemplate="{DataTemplate views:Home}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Home}" Route="home0"/>
     </FlyoutItem>
     <FlyoutItem Title="Home" x:Name="Home1" IsVisible="{Binding Home1Visible}">
-        <ShellContent ContentTemplate="{DataTemplate views:Home1}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Home1}" Route="home1"/>
     </FlyoutItem>
     <FlyoutItem Title="Junior Library">
-        <ShellContent ContentTemplate="{DataTemplate views:Jnr}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Jnr}" Route="jnrlib"/>
     </FlyoutItem>
     <FlyoutItem Title="Senior Library">
-        <ShellContent ContentTemplate="{DataTemplate views:Snr}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Snr}" Route="snrlib"/>
     </FlyoutItem>
     <FlyoutItem Title="About">
-        <ShellContent ContentTemplate="{DataTemplate views:About}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:About}" Route="about"/>
     </FlyoutItem>
     <FlyoutItem Title="Settings">
-        <ShellContent ContentTemplate="{DataTemplate views:Settings}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Settings}" Route="settings"/>
     </FlyoutItem>
 
 </Shell>

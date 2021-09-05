@@ -164,18 +164,20 @@ namespace LBot.Templates {
             string libraryName = lib.currentLibrary;
 
             if (lib.currentLibrary =="jnr") {
-                LibraryTitle.Text="Junior Library";
                 BindingContext = new jnrDynamicDataViewModel();
+                LibraryTitle.Text = "Junior";
                 MessagingCenter.Subscribe<object, Trends>(this, "jnrTrends", (sender, value) => {
                     Trend = value;
                     updateChart();
+                    MessagingCenter.Unsubscribe<object, Trends>(this, "jnrTrends");
                 });
             } else {
-                LibraryTitle.Text="Senior Library";
                 BindingContext = new snrDynamicDataViewModel();
+                LibraryTitle.Text = "Senior";
                 MessagingCenter.Subscribe<object, Trends>(this, "snrTrends", (sender, value) => {
                     Trend = value;
                     updateChart();
+                    MessagingCenter.Unsubscribe<object, Trends>(this, "snrTrends");
                 });
             }
 

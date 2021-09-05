@@ -4,22 +4,43 @@
              x:Class="LBot.Views.About"
              Title="About">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="If you find any bugs or issues within this app please report them here: https://github.com/L-Bot-SBHS/MobileApp/issues/"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   TextColor="{StaticResource TextColor}">
-                <!-- <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="If you find any bug in this app or if you have suggestiong please create an issue"></Span>
-                        <Span Text="here" TextColor="Blue" TextDecorations="Underline">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://github.com/L-Bot-SBHS/MobileApp/issues/"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                    </FormattedString>
-                </Label.FormattedText> -->
-            </Label>
+        <StackLayout BackgroundColor="{StaticResource BackgroundColour}">
+            <StackLayout Margin="0, 20, 0, 20" HorizontalOptions="Center">
+                <Label Text="About" Style="{StaticResource tileText}"/>
+                
+                <Label Margin="10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span  Text="This app was developed to help interface with the Lbot system for the libraries at SBHS, you find a website version of this app " Style="{StaticResource plainText}"/>
+                            <Span Text="here" TextColor="{StaticResource LinkColor}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <!-- <TapGestureRecognizer Command="gotoWebsite"/> -->
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Margin="10">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="If you find any issues, or have any suggestions, within this app please report them " Style="{StaticResource plainText}"/>
+                            <Span Text="here" TextColor="{StaticResource LinkColor}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <!--<TapGestureRecognizer Command="gotoIssues"/>-->
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="If you find any bugs or issues within this app please report them here:" Style="{StaticResource plainText}"/>
+                <Label HorizontalOptions="Center" Text="github.com/L-Bot-SBHS/MobileApp/issues" TextColor="{StaticResource LinkColor}" TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="gotoIssues"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -45,11 +45,11 @@
                         <Label Grid.Row="4" Grid.Column="1" Text="7:00am - 3:30pm" Style="{StaticResource plainText}"/>
                     </Grid>
                     <Label Text="Total Seats" Style="{StaticResource tileText}"/>
-                    <Label Text="108" Style="{StaticResource plainText}"/>
+                    <Label Text="108" HorizontalOptions="Center" Style="{StaticResource plainText}"/>
                     <Label Text="Librarians" Style="{StaticResource tileText}"/>
-                    <Label Text="Ms Crothers" Style="{StaticResource plainText}"/>
+                    <Label Text="Ms Crothers" HorizontalOptions="Center" Style="{StaticResource plainText}"/>
                     <Label Text="Email" Style="{StaticResource tileText}"/>
-                    <Label Text="juniorlibrary@sbhs.nsw.edu.au" Style="{StaticResource plainText}"></Label>
+                    <Label Text="juniorlibrary@sbhs.nsw.edu.au" HorizontalOptions="Center" Style="{StaticResource plainText}"></Label>
                 </StackLayout>
             </xct:TabViewItem.Content>
         </xct:TabViewItem>

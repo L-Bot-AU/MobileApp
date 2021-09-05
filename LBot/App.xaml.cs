@@ -32,8 +32,20 @@ namespace LBot {
         }
 
         protected override void OnStart() {
-            int home_page = Preferences.Get("home_page_choice", 1);
-            MessagingCenter.Send<object, int>(this, "Home", home_page);
+            int homePage = Preferences.Get("home_page_choice", 1);
+            string defPage = Preferences.Get("defaultHomePage", "home");
+            MessagingCenter.Send<object, int>(this, "Home", homePage);
+            if (defPage == "home") {
+                if (homePage==0) {
+                    Shell.Current.GoToAsync($"//home0");
+                } else {
+                    Shell.Current.GoToAsync($"//home1");
+                }
+            } else if (defPage =="jnr") {
+                Shell.Current.GoToAsync($"//jnrlib");
+            } else {
+                Shell.Current.GoToAsync($"//snrlib");
+            }
         }
 
         protected override void OnSleep() {

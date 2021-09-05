@@ -4,23 +4,41 @@
              xmlns:vm="clr-namespace:LBot.ViewModels"
              x:Class="LBot.Views.Settings"
              Title="Settings">
-    <ContentPage.BindingContext>
-        <vm:AppViewModel></vm:AppViewModel>
-    </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Settings" Style="{StaticResource tileText}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Choose home screen: " Style="{StaticResource plainText}"></Label>
+            </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Home Screen: " Style="{StaticResource plainText}"/>
-                <Switch Grid.Column="1" Toggled="ToggleHomeChoice" OnColor="{StaticResource NavColor}" ThumbColor="{StaticResource NavColor}"></Switch>
+                <Label Text="Compact Home Screen" Style="{StaticResource plainText}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Switch x:Name="homeSwitch" Grid.Column="1"  OnColor="{StaticResource NavColor}" ThumbColor="{StaticResource NavColor}"></Switch>
+                <Label Text="Detailed Home Screen" Style="{StaticResource plainText}" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <Label Text="Choose Default Page" Style="{StaticResource tileText}" HorizontalOptions="Center"/>
+            <Grid HorizontalOptions="Center" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Home Page" BackgroundColor="{StaticResource NavColor}" Clicked="HomeClicked" TextColor="Black" x:Name="homebutton" FontAttributes="Bold" HeightRequest="75"/>
+                <Button Text="Junior Library Page" BackgroundColor="{StaticResource NavColor}" Clicked="JnrClicked" TextColor="Black" x:Name="jnrbutton" Grid.Column="1" FontAttributes="Bold" HeightRequest="75"/>
+                <Button Text="Senior Library Page" BackgroundColor="{StaticResource NavColor}" Clicked="SnrClicked" TextColor="Black" x:Name="snrbutton" Grid.Column="2"  FontAttributes="Bold" HeightRequest="75"/>
             </Grid>
 
         </StackLayout>

@@ -8,7 +8,6 @@
             <Grid Margin="10" x:Name="eventsGrid">
 
             </Grid>
-            
             <Label Text="Key" Style="{StaticResource tileText}"/>
             
             <Grid Margin="10">
@@ -27,20 +26,19 @@
                 <Label Text="" BackgroundColor="Green" Grid.Row="2"></Label>
                 <Label Text="Low Impact" Grid.Column="1" Grid.Row="2" Style="{StaticResource plainText}"></Label>
             </Grid>
-            <Grid Margin="10">
+            <Grid Margin="10" HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                
-                
-                <Button Text="Filter Junior Library Events" x:Name="jnrFilterButton" BackgroundColor="{StaticResource NavColor}" CornerRadius="5"></Button>
+
+                <Label x:Name="jnrLabel" Text="Filter Junior Library Events" Style="{StaticResource largeText}"/>
                 <CheckBox x:Name="jnrCheckBox" Grid.Column="1" Color="{StaticResource NavColor}" IsChecked="False" CheckedChanged="filterJnr"></CheckBox>
-                <Button Text="Filter Senior Library Events" x:Name="snrFilterButton" BackgroundColor="{StaticResource NavColor}" CornerRadius="5" Grid.Row="1"></Button>
+                <Label x:Name="snrLabel" Text="Filter Senior Library Events" Style="{StaticResource largeText}" Grid.Row="1"/>
                 <CheckBox x:Name="snrCheckBox" Grid.Column="1" Grid.Row="1" Color="{StaticResource NavColor}" IsChecked="False" CheckedChanged="filterSnr"></CheckBox>
             </Grid>
             

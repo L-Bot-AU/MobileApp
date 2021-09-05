@@ -5,8 +5,7 @@
              Title="About">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="If you find any bugs or issues within this app please report them here:
-                   https://github.com/L-Bot-SBHS/MobileApp/issues/"
+            <Label Text="If you find any bugs or issues within this app please report them here: https://github.com/L-Bot-SBHS/MobileApp/issues/"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                    TextColor="{StaticResource TextColor}">

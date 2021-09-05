@@ -9,8 +9,8 @@ using Xamarin.Forms.Xaml;
 
 namespace LBot.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AutomateEgg:ContentPage {
-        public AutomateEgg() {
+    public partial class Settings:ContentPage {
+        public Settings() {
             InitializeComponent();
         }
 

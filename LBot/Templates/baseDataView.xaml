@@ -7,7 +7,7 @@
              x:Class="LBot.Templates.baseDataView">
     <ContentView.Content>
         <StackLayout>
-            <Label Style="{StaticResource tileText}" x:Name="LibraryTitle" Text="A"></Label>
+            <Label Style="{StaticResource tileText}" x:Name="LibraryTitle"></Label>
             <Frame BackgroundColor="Red" x:Name="Alert" Margin="10" CornerRadius="10">
                 <RelativeLayout>
                     <Button Text="X" Opacity="0.75" TextColor="White" BackgroundColor="Red" TranslationX="300" TranslationY="-15" FontAttributes="Bold" FontSize="Medium" Clicked="closeButton"></Button>
@@ -31,27 +31,27 @@
             
             <Frame BackgroundColor="{StaticResource BackgroundColour}" WidthRequest="100" Margin="10" Padding="0" BorderColor="Black" CornerRadius="15" HeightRequest="50" >
                 <RelativeLayout>
-                    <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="{Binding FullnessBar}" HeightRequest="30"></Frame>
-                    <Label x:Name="percentage" TextColor="Black" Text="{Binding Fullness}" FontSize="Medium" Margin="10" WidthRequest="64" TranslationX="163"></Label>
+                    <Frame BackgroundColor="{StaticResource NavColor}" WidthRequest="{Binding FullnessBar}" HeightRequest="30" ></Frame>
+                    <Label x:Name="percentage" TextColor="Black" Text="{Binding Fullness}" FontSize="Medium" Margin="10" WidthRequest="128" TranslationX="163"></Label>
                 </RelativeLayout>
             </Frame>
             <Label x:Name="close" Text="Closes 2:30pm" Style="{StaticResource largeText}"></Label>
-            <StackLayout x:Name="TodaysPrediction">
+            <StackLayout x:Name="TodaysPrediction" HorizontalOptions="Center">
                 <Label Text="Predictions for today" Style="{StaticResource tileText}"></Label>
-                <Grid>
+                <Grid HorizontalOptions="Center" ColumnSpacing="30">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition> <!--Before School -->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 1-->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 2-->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 1 -->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 3-->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 4-->
-                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 2 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Before School -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 1 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 2 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 1  -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 3 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Period 4 -->
+                        <RowDefinition Height="Auto"></RowDefinition> <!-- Break 2  -->
                         <RowDefinition Height="Auto"></RowDefinition> <!-- Period 5 -->
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Label x:Name="Slot1Title" Style="{StaticResource plainText}" Text="{Binding PeriodNames[0]}"></Label>
@@ -76,14 +76,14 @@
                     <Label x:Name="Slot7Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="6" Text="{Binding PeriodValues[6]}"></Label>
 
                     <Label x:Name="Slot8Title" Style="{StaticResource plainText}" Grid.Row="7" Text="{Binding PeriodNames[7]}"></Label>
-                    <Label x:Name="Slot8Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="7" Text="{Binding PeriodValues[6]}"></Label>
+                    <Label x:Name="Slot8Value" Style="{StaticResource plainText}" Grid.Column="1" Grid.Row="7" Text="{Binding PeriodValues[7]}"></Label>
 
                 </Grid>
             </StackLayout>
 
             <StackLayout x:Name="FuturePredictions">
                 <Label Text="Future Predictions" Style="{StaticResource tileText}"></Label>
-                <microcharts:ChartView x:Name="Chart" HeightRequest="300"></microcharts:ChartView>
+                <microcharts:ChartView x:Name="Chart" HeightRequest="300" BackgroundColor="{StaticResource BackgroundColour}"></microcharts:ChartView>
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>

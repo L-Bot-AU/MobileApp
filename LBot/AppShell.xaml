@@ -19,10 +19,10 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Home" x:Name="Home0" IsVisible="{Binding home0Visible}">
+    <FlyoutItem Title="Home" x:Name="Home0" IsVisible="{Binding Home0Visible}">
         <ShellContent ContentTemplate="{DataTemplate views:Home}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Home" x:Name="Home1" IsVisible="{Binding home1Visible}">
+    <FlyoutItem Title="Home" x:Name="Home1" IsVisible="{Binding Home1Visible}">
         <ShellContent ContentTemplate="{DataTemplate views:Home1}"/>
     </FlyoutItem>
     <FlyoutItem Title="Junior Library">
@@ -35,7 +35,7 @@
         <ShellContent ContentTemplate="{DataTemplate views:About}"/>
     </FlyoutItem>
     <FlyoutItem Title="Settings">
-        <ShellContent ContentTemplate="{DataTemplate views:AutomateEgg}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:Settings}"/>
     </FlyoutItem>
 
 </Shell>

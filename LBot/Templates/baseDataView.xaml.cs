@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 using Microcharts;
 using LBot.ViewModels;
 using LBot.Models;
+using SkiaSharp;
 
 namespace LBot.Templates {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -79,22 +80,36 @@ namespace LBot.Templates {
                 default:
                     break;
             }
-
             ChartEntry[] entries = new[] {
                 new ChartEntry(Trend.data[index][0]) {
                     Label = Trend.labels[0],
-                    ValueLabel = Trend.data[index][0].ToString()
+                    ValueLabel = Trend.data[index][0].ToString(),
+                    Color = SKColor.Parse("#1E90FF")
                 },
                 new ChartEntry(Trend.data[index][1]) {
                     Label = Trend.labels[1],
-                    ValueLabel = Trend.data[index][1].ToString()
+                    ValueLabel = Trend.data[index][1].ToString(),
+                    Color = SKColor.Parse("#1E90FF")
                 },
                 new ChartEntry(Trend.data[index][2]) {
                     Label = Trend.labels[2],
-                    ValueLabel = Trend.data[index][2].ToString()
+                    ValueLabel = Trend.data[index][2].ToString(),
+                    Color = SKColor.Parse("#1E90FF")
                 }
             };
-            BarChart chart = new BarChart { Entries = entries, ValueLabelOrientation=Orientation.Horizontal, MaxValue=110, LabelOrientation=Orientation.Horizontal };
+            int max = 108;
+            App.libBase lib = (Application.Current as App).libInfo;
+            if (lib.currentLibrary=="snr") {
+                max=84;
+            }
+            BarChart chart = new BarChart {
+                Entries = entries,
+                ValueLabelOrientation=Orientation.Horizontal,
+                MaxValue=max,
+                LabelOrientation=Orientation.Horizontal,
+                AnimationDuration= TimeSpan.Zero,
+                BackgroundColor=SKColor.Parse("#FAFAFA")
+            };
             Chart.Chart = chart;
         }
 
@@ -151,9 +166,17 @@ namespace LBot.Templates {
             if (lib.currentLibrary =="jnr") {
                 LibraryTitle.Text="Junior Library";
                 BindingContext = new jnrDynamicDataViewModel();
+                MessagingCenter.Subscribe<object, Trends>(this, "jnrTrends", (sender, value) => {
+                    Trend = value;
+                    updateChart();
+                });
             } else {
                 LibraryTitle.Text="Senior Library";
                 BindingContext = new snrDynamicDataViewModel();
+                MessagingCenter.Subscribe<object, Trends>(this, "snrTrends", (sender, value) => {
+                    Trend = value;
+                    updateChart();
+                });
             }
 
             if (page.currentPage=="home") {
@@ -161,14 +184,10 @@ namespace LBot.Templates {
                 FuturePredictions.IsVisible = false;
             }
 
-            MessagingCenter.Subscribe<object, Trends>(this, "jnrTrends", (sender, value) => {
-                Trend = value;
-                updateChart();
-            });
+            
             selectedDay = "Mon";
             MondayButton.FontAttributes = FontAttributes.Bold;
             MondayButton.TextColor = Color.White;
         }
-
     }
 }

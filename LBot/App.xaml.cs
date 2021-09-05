@@ -34,7 +34,6 @@ namespace LBot {
         protected override void OnStart() {
             int home_page = Preferences.Get("home_page_choice", 1);
             MessagingCenter.Send<object, int>(this, "Home", home_page);
-
         }
 
         protected override void OnSleep() {

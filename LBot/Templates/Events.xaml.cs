@@ -23,17 +23,16 @@ namespace LBot.Templates {
             eventsGrid.Children.Clear();
             eventsGrid.ColumnDefinitions.Clear();
             eventsGrid.RowDefinitions.Clear();
-            
-            
+
+            eventsGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width=20 });
+            eventsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+
             for (int i = 0; i<count; i++) {
                 if(eventList[i].library=="jnr" && jnrFilter || eventList[i].library=="snr" && snrFilter) {
                     continue;
                 }
                 eventsGrid.RowDefinitions.Add(new RowDefinition());
             }
-
-            eventsGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width=20 });
-            eventsGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             for (int i = 0; i<count; i++) {
                 if (eventList[i].library=="jnr" && jnrFilter || eventList[i].library=="snr" && snrFilter) {
@@ -75,22 +74,16 @@ namespace LBot.Templates {
         public void filterJnr(object sender, EventArgs args) {
             if (JnrFilter) {
                 JnrFilter = false;
-                jnrCheckBox.IsChecked = false;
-                
             } else {
                 JnrFilter = true;
-                jnrCheckBox.IsChecked = true;
             }
             generateEventGrid(JnrFilter, SnrFilter);
         }
 
         public void filterSnr(object sender, EventArgs args) {
             if (SnrFilter) {
-                snrCheckBox.IsChecked = false;
                 SnrFilter = false;
-
             } else {
-                snrCheckBox.IsChecked = true;
                 SnrFilter = true;
             }
             generateEventGrid(JnrFilter, SnrFilter);

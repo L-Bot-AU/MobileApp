@@ -15,8 +15,9 @@ namespace LBot.ViewModels {
             }
         }
 
-        private int remaining, fullnessbar;
-        private string fullness;
+        private int remaining;
+        private int fullnessbar = -50;
+        private string fullness= "Loading";
         private string alert = "Alert Loading...";
         private List<string> periodnames;
         private List<string> periodvalues;
@@ -24,7 +25,7 @@ namespace LBot.ViewModels {
 
         public int Remaining { get => remaining; set { remaining = value; NotifyPropertyChanged(); } }
         public string Fullness { get => fullness; set { fullness=value+"% full"; NotifyPropertyChanged(); } }
-        public int FullnessBar { get => fullnessbar; set { fullnessbar = (400*(value/100))-50; } }
+        public int FullnessBar { get => fullnessbar; set { fullnessbar = 4*value-50; } }
         public string Alert { get => alert; set { alert=value; NotifyPropertyChanged(); } }
         public List<string> PeriodNames { get => periodnames; set { periodnames=value; NotifyPropertyChanged(); } }
         public List<string> PeriodValues { get => periodvalues; set { periodvalues=value; NotifyPropertyChanged(); } }

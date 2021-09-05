@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:LBot.ViewModels"
-             x:Class="LBot.Views.AutomateEgg"
+             x:Class="LBot.Views.Settings"
              Title="Settings">
     <ContentPage.BindingContext>
         <vm:AppViewModel></vm:AppViewModel>
@@ -20,7 +20,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="Home Screen: " Style="{StaticResource plainText}"/>
-                <Switch IsToggled="False" Grid.Column="1" Toggled="ToggleHomeChoice" OnColor="{StaticResource NavColor}" ThumbColor="{StaticResource NavColor}"></Switch>
+                <Switch Grid.Column="1" Toggled="ToggleHomeChoice" OnColor="{StaticResource NavColor}" ThumbColor="{StaticResource NavColor}"></Switch>
             </Grid>
 
         </StackLayout>
